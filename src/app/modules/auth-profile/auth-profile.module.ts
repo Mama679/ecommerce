@@ -5,6 +5,7 @@ import { AuthProfileRoutingModule } from './auth-profile-routing.module';
 import { AuthProfileComponent } from './auth-profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     CommonModule,
-    AuthProfileRoutingModule
+    AuthProfileRoutingModule,
+    SharedModule
   ]
 })
 export class AuthProfileModule { }
