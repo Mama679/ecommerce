@@ -56,7 +56,14 @@ export class AuthService {
 
   registro(data:any){
     let url = URL_SERVICIO + "user/register";
-    return this.http.post(url,data);
+    return this.http.post(url,data).pipe(
+      map((resp:any)=>{
+       return resp;
+      }),catchError((error:any) =>{
+        return of(error);
+      })
+    );
+    //return this.http.post(url,data);
   }
 
   logOut(){
