@@ -9,10 +9,26 @@ import { URL_SERVICIO } from 'src/app/config/config';
 })
 export class AuthService {
 
+  user:any = null;
+  token:any = null;
+
   constructor(
     private http:HttpClient,
     private router: Router
-    ) { }
+    ) {
+       this.getLocalStorage();
+     }
+
+  
+  getLocalStorage(){
+    if(localStorage.getItem("token")){
+      this.token = localStorage.getItem("token");
+      this.user = JSON.parse(localStorage.getItem('user') ?? '');
+    }else{
+      this.user = null;
+      this.token = null;
+    }
+  }
 
   login(email:string, password: string){
     let url = URL_SERVICIO + "user/login";
