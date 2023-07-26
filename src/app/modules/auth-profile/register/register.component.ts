@@ -27,7 +27,7 @@ constructor(
   }
 
   registrar(){
-    if(!this.name ||!this.surname || this.email || this.phone || !this.password || !this.repeat_password)
+    if(!this.name ||!this.surname || !this.email || !this.phone || !this.password || !this.repeat_password)
     {
       alert("Todos los campos son requeridos");
       return;
@@ -46,6 +46,11 @@ constructor(
       password:this.password,
       rol:this.rol
     }
+
+    this.authService.registro(data).subscribe((resp:any)=>{
+        console.log(resp);
+    });
+
   }
 
 }
