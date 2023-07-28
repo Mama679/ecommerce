@@ -23,7 +23,10 @@ constructor(
 ){}
 
   ngOnInit(): void {
-    
+    if(this.authService.user){
+      //console.log(this.authService.user);
+      this.router.navigate(['/']);
+    }
   }
 
   registrar(){
@@ -48,7 +51,14 @@ constructor(
     }
 
     this.authService.registro(data).subscribe((resp:any)=>{
-        console.log(resp);
+        if(!resp.error && resp)
+        {
+          alert("Cliente registrado.");
+          this.router.navigate(['/']);
+        }
+        else{
+          alert(resp.error.mensaje);
+        }
     });
 
   }
